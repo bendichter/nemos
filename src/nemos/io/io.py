@@ -19,6 +19,7 @@ from .._observation_model_builder import (
 )
 from .._regularizer_builder import AVAILABLE_REGULARIZERS, instantiate_regularizer
 from ..glm import GLM, ClassifierGLM, ClassifierPopulationGLM, PopulationGLM
+from ..glm_hmm import GLMHMM
 from ..utils import _get_name, _unflatten_dict, get_env_metadata
 from ..validation import _suggest_keys
 
@@ -27,6 +28,7 @@ MODEL_REGISTRY = {
     "nemos.glm.glm.PopulationGLM": PopulationGLM,
     "nemos.glm.classifier_glm.ClassifierGLM": ClassifierGLM,
     "nemos.glm.classifier_glm.ClassifierPopulationGLM": ClassifierPopulationGLM,
+    "nemos.glm_hmm.glm_hmm.GLMHMM": GLMHMM,
 }
 
 ERROR_MSG_OVERRIDE_NOT_ALLOWED = (
@@ -89,7 +91,7 @@ def load_model(filename: Union[str, Path], mapping_dict: dict = None):
     observation_model: GammaObservations()
     regularizer: Ridge()
     regularizer_strength: 0.1
-    solver_kwargs: {'stepsize': 0.1, 'maxiter': 1000, 'tol': 1e-06}
+    solver_kwargs: {'maxiter': 1000, 'stepsize': 0.1, 'tol': 1e-06}
     solver_name: BFGS
 
     >>> # Loading a custom inverse link function
