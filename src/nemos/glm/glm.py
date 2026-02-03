@@ -1195,9 +1195,14 @@ class PopulationGLM(GLM):
 
     Parameters
     ----------
-    observation_model :
+    observation_model : optional, default="Poisson"
         Observation model to use. The model describes the distribution of the neural activity.
-        Default is the Poisson model.
+        Can be either the name of a distribution or an instance of the Observations class of that distribution:
+            * "Poisson" or obs.PoissonObservations()
+            * "Gamma" or obs.GammaObservations()
+            * "Bernoulli" or obs.BernoulliObservations()
+            * "NegativeBinomial" or obs.NegativeBinomialObservations()
+            * "Gaussian" or obs.GaussianObservations()
     inverse_link_function :
         A function that maps the linear combination of predictors into a firing rate. The default depends
         on the observation model, see the table above.
